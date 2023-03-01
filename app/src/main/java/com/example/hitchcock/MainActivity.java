@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton maleButton;
     private RadioButton femaleButton;
     //private RadioButton nonBinaryButton;
+
+    private RadioButton imperialButton;
+    private RadioButton metricButton;
     private EditText feetEditText;
     private EditText inchesEditText;
     private EditText weightEditText;
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         maleButton = findViewById(R.id.radiobutton_male);
         femaleButton = findViewById(R.id.radiobutton_female);
         //nonBinaryButton = findViewById(R.id.radiobutton_non_binary);
+        imperialButton = findViewById(R.id.radiobutton_imperial);
+        metricButton = findViewById(R.id.radiobutton_metric);
         feetEditText = findViewById(R.id.edit_text_feet);
         inchesEditText = findViewById(R.id.edit_text_inches);
         weightEditText = findViewById(R.id.edit_text_weight);
@@ -90,22 +95,46 @@ public class MainActivity extends AppCompatActivity {
         return age < 18; //true
     }
 
+    public boolean onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        return metricButton.isChecked();
+    }
+
     private double calculateB() {
+
+        boolean checkedMetric = onRadioButtonClicked(metricButton);
 
         String feetText = feetEditText.getText().toString();
         String inchesText = inchesEditText.getText().toString();
         String weightText = weightEditText.getText().toString();
 
-        int feet = Integer.parseInt(feetText);
-        int inches = Integer.parseInt(inchesText);
-        int weight = Integer.parseInt(weightText);
+        //For the metric System:
+        if (checkedMetric) {
+            int meters = Integer.parseInt(feetText);
+            float centimeters = Float.parseFloat(inchesText);
+            double weight = Double.parseDouble(weightText);
 
-        int totalInches = (feet * 12) + inches;
+            double totalHeightInMeters = (centimeters / 100) + meters;
 
-        double heightInMeters = totalInches * 0.0254;
+            return weight / (totalHeightInMeters * totalHeightInMeters);
+        }
 
-        //BMI formula
-        return weight / (heightInMeters * heightInMeters);
+        //For the imperial System:
+        else {
+            int feet = Integer.parseInt(feetText);
+            int inches = Integer.parseInt(inchesText);
+            double weight = Double.parseDouble(weightText);
+
+            weight = weight * 0.45;
+
+            int totalInches = (feet * 12) + inches;
+
+            double heightInMeters = totalInches * 0.0254;
+
+            //BMI formula
+            return weight / (heightInMeters * heightInMeters);
+        }
     }
 
     private void displayResult(double bmi) {
