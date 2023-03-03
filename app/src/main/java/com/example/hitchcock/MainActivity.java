@@ -3,12 +3,12 @@ package com.example.hitchcock;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
+import android.content.Intent;
 
 import java.text.DecimalFormat;
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView resultText;
     Button calculateButton;
     Button calculateButtonRmr;
+    Button calculateButtonTarget;
     private RadioButton maleButton;
     private RadioButton femaleButton;
     private RadioButton metricButton;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         ageEditText = findViewById(R.id.edit_text_age);
         calculateButton = findViewById(R.id.button_calculate);
         calculateButtonRmr = findViewById(R.id.button_calculate_rmr);
+        calculateButtonTarget = findViewById(R.id.button_calculate_target);
     }
     private void setupButtonClickListener() {
         calculateButton.setOnClickListener(v -> {
@@ -70,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
                 displayResultRmr(rmrResult);
             }
             });
+            calculateButtonTarget.setOnClickListener(v -> {
+
+            Intent calculateTargetActivityIntent = new Intent(MainActivity.this, CalculateTargetActivity.class);
+
+            startActivity(calculateTargetActivityIntent);
+        });
     }
     private boolean checkForEmptyInput() {
         String feetStrText = feetEditText.getText().toString();
@@ -110,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private double calculateR() {
-        //The Mifflin-St Jeor equation, created in the 1990s, provided an alternative and more valid estimate of RMR (3).
+        //The Mifflin-St Jeor equation, created in the 1990s, provided an alternative and more valid estimate of RMR.
         //The equations for males and females are:
         //Men: (10 × weight in kg) + (6.25 × height in cm) - (5 × age in years) + 5
         //Women: (10 × weight in kg) + (6.25 × height in cm) - (5 × age in years) - 161
