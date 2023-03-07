@@ -18,7 +18,6 @@ public class CalculateTargetActivity extends AppCompatActivity {
 
     TextView resultTextTarget;
     Button estimateTargetButton;
-    private RadioButton maleButtonTarget;
     private RadioButton femaleButtonTarget;
     private RadioButton imperialButtonTarget;
     private RadioButton metricButtonTarget;
@@ -26,7 +25,6 @@ public class CalculateTargetActivity extends AppCompatActivity {
     private RadioButton slightlyActiveButtonTarget;
     private RadioButton moderatelyActiveButtonTarget;
     private RadioButton veryActiveButtonTarget;
-    private RadioButton extremelyActiveButtonTarget;
     private EditText feetMetersEditText;
     private EditText inchesCmEditText;
     private EditText weightTargetEditText;
@@ -46,7 +44,6 @@ public class CalculateTargetActivity extends AppCompatActivity {
 
         resultTextTarget = findViewById(R.id.text_view_result_target);
         estimateTargetButton = findViewById(R.id.button_estimate_target);
-        maleButtonTarget = findViewById(R.id.radiobutton_male_target);
         femaleButtonTarget = findViewById(R.id.radiobutton_female_target);
         imperialButtonTarget = findViewById(R.id.radiobutton_imperial_target);
         metricButtonTarget = findViewById(R.id.radiobutton_metric_target);
@@ -54,7 +51,6 @@ public class CalculateTargetActivity extends AppCompatActivity {
         slightlyActiveButtonTarget = findViewById(R.id.radio_button_slightly_active);
         moderatelyActiveButtonTarget = findViewById(R.id.radio_button_moderately_active);
         veryActiveButtonTarget = findViewById(R.id.radio_button_very_active);
-        extremelyActiveButtonTarget = findViewById(R.id.radio_button_extremely_active);
         feetMetersEditText = findViewById(R.id.edit_text_feet_meters_target);
         inchesCmEditText = findViewById(R.id.edit_text_inches_cm_target);
         weightTargetEditText = findViewById(R.id.edit_text_weight_target);
