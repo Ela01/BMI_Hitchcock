@@ -111,6 +111,21 @@ public class CalculateTargetActivity extends AppCompatActivity {
             return bMr * 1.9;
         }
     }
+    private double calculateTargetCaloriesForWeightLoss(){
+
+        double activityExpenditure = calculateBmrWithActivityExpenditure();
+        String expectedLossText = desiredWeightLossEditText.getText().toString();
+        String daysToTargetWeightText = daysToAchieveTargetEditText.getText().toString();
+        int expectedLoss = Integer.parseInt(expectedLossText);
+        int daysToTargetWeight = Integer.parseInt(daysToTargetWeightText);
+
+        //if imperial:
+        double perDayCalorieReduction = (expectedLoss * 3500) / daysToTargetWeight;
+        double calorieConsumptionToTarget = activityExpenditure - perDayCalorieReduction;
+
+        return calorieConsumptionToTarget;
+
+    }
 }
 
 
