@@ -43,7 +43,7 @@ public class CalculateTargetActivity extends AppCompatActivity {
 
     private void findViews() {
 
-        resultTextTarget = findViewById(R.id.text_view_calculate_target);
+        resultTextTarget = findViewById(R.id.text_view_result_target);
         estimateTargetButton = findViewById(R.id.button_estimate_target);
         maleButtonTarget = findViewById(R.id.radiobutton_male_target);
         femaleButtonTarget = findViewById(R.id.radiobutton_female_target);
@@ -146,7 +146,7 @@ public class CalculateTargetActivity extends AppCompatActivity {
         String bmrTextResult = myDecimalFormatter.format(bMr);
         String bMrPlusActivityTextResult = myDecimalFormatter.format(bMrPlusActivity);
         String targetCalorieIntakeTextResult = myDecimalFormatter.format(targetCalorieIntake);
-        String fullResultString = "Your daily BMR (Basal Metabolic Rate) is " + bmrTextResult + " Calories. Factoring your activity level, your body uses about " + bMrPlusActivityTextResult + ". In order to achieve your target weight, you need to consume " + targetCalorieIntakeTextResult + " Calories.";
+        String fullResultString = "Your daily BMR (Basal Metabolic Rate) is " + bmrTextResult + " Calories. Factoring in your activity level, your body uses about " + bMrPlusActivityTextResult + " Calories. In order to achieve your target weight, you need to consume " + targetCalorieIntakeTextResult + " Calories.";
 
         resultTextTarget.setText(fullResultString);
     }

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
-        setupButtonClickListener();
+        setupButtonClickListeners();
     }
     private void findViews() {
         // Class Variable up top in public highlighted in purple
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         calculateButtonRmr = findViewById(R.id.button_calculate_rmr);
         calculateButtonTarget = findViewById(R.id.button_calculate_target);
     }
-    private void setupButtonClickListener() {
+    private void setupButtonClickListeners() {
         calculateButton.setOnClickListener(v -> {
 
             boolean checkMissingInput = checkForEmptyInput();

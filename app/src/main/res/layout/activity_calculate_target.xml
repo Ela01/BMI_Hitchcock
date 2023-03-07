@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="16dp">
-
 
     <TextView
         android:id="@+id/text_view_calculate_target"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:fontFamily="sans-serif-condensed"
         android:text="Calculate Your Target"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp" />
 
@@ -20,9 +20,7 @@
         android:id="@+id/radio_group_measurement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_view_calculate_target"
-        android:layout_centerHorizontal="true"
-
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <RadioButton
@@ -41,12 +39,9 @@
 
 
     <RadioGroup
-        android:id="@+id/radio_group_female_male"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/radio_group_measurement"
-        android:layout_centerHorizontal="true"
-
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <RadioButton
@@ -64,20 +59,14 @@
     </RadioGroup>
 
     <LinearLayout
-        android:id="@+id/edit_text_feet_inches_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/radio_group_female_male"
-        android:layout_centerHorizontal="true"
-
-        android:layout_marginBottom="8dp">
+        android:padding="4dp">
 
         <EditText
             android:id="@+id/edit_text_feet_meters_target"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginRight="8dp"
             android:hint="feet/meters"
             android:inputType="number"
             android:textAlignment="center" />
@@ -86,8 +75,6 @@
             android:id="@+id/edit_text_inches_cm_target"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginRight="8dp"
             android:hint="inches/cm"
             android:inputType="number" />
 
@@ -95,8 +82,6 @@
             android:id="@+id/edit_text_weight_target"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginRight="8dp"
             android:hint="weight"
             android:inputType="number" />
 
@@ -104,7 +89,6 @@
             android:id="@+id/edit_text_age_target"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:hint="age"
             android:inputType="number" />
@@ -112,25 +96,23 @@
     </LinearLayout>
 
     <RadioGroup
-        android:id="@+id/radio_group_activity_measurement"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_text_feet_inches_weight"
-        android:layout_centerHorizontal="true"
+
         android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/radio_button_sedentary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="Sedentary/Light exercise" />
 
         <RadioButton
             android:id="@+id/radio_button_slightly_active"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+
             android:text="Slightly Active" />
 
         <RadioButton
@@ -157,9 +139,6 @@
         android:id="@+id/Layout_target"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/radio_group_activity_measurement"
-        android:layout_centerHorizontal="true"
-
         android:orientation="horizontal">
 
 
@@ -167,8 +146,6 @@
             android:id="@+id/edit_text_expected_weight_loss"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginRight="8dp"
             android:hint="anticipated loss"
             android:inputType="number"
             android:textAlignment="center" />
@@ -177,8 +154,6 @@
             android:id="@+id/edit_text_time_to_achieve_loss"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginRight="8dp"
             android:hint="days to achieve loss"
             android:inputType="number"
             android:textAlignment="center" />
@@ -188,23 +163,17 @@
         android:id="@+id/button_estimate_target"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Layout_target"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Estimate Target"
         android:textAlignment="center" />
 
     <TextView
-        android:id="@+id/text_view_result"
+        android:id="@+id/text_view_result_target"
         android:layout_width="match_parent"
-        android:layout_height="136dp"
-        android:layout_below="@id/button_estimate_target"
-        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:text="Awaiting data input... " />
+        android:text="Awaiting input..." />
 
-
-</RelativeLayout>
-
-
+</LinearLayout>
