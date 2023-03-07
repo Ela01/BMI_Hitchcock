@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 //import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -64,13 +65,25 @@ public class CalculateTargetActivity extends AppCompatActivity {
 
     private void setupButtonClickListener() {
         estimateTargetButton.setOnClickListener(v -> {
-            double bMrResult = calculateBmr();
-            double bMrPlusActivityResult = calculateBmrWithActivityExpenditure();
-            double targetCaloriesResult = calculateTargetCaloriesForWeightLoss();
 
-            displayResults(bMrResult, bMrPlusActivityResult, targetCaloriesResult);
-
+            boolean checkForEmptyInput = checkForEmptyInput();
+            if (checkForEmptyInput) {
+                String alertPopUp = "Please enter in the missing values";
+                Toast.makeText(CalculateTargetActivity.this, alertPopUp, Toast.LENGTH_LONG).show();
+            } else {
+                double bMrResult = calculateBmr();
+                double bMrPlusActivityResult = calculateBmrWithActivityExpenditure();
+                double targetCaloriesResult = calculateTargetCaloriesForWeightLoss();
+                displayResults(bMrResult, bMrPlusActivityResult, targetCaloriesResult);
+                }
         });
+    }
+    private boolean checkForEmptyInput(){
+        String feetMetersStrText = feetMetersEditText.getText().toString();
+        String inchesCmStrText = inchesCmEditText.getText().toString();
+        String weightStrText = weightTargetEditText.getText().toString();
+        String ageStrText = ageTargetEditText.getText().toString();
+        return ageStrText.isEmpty() || feetMetersStrText.isEmpty() || inchesCmStrText.isEmpty() || weightStrText.isEmpty();
     }
 
     private double calculateBmr() {

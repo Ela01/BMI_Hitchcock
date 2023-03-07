@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         inchesEditText = findViewById(R.id.edit_text_inches);
         weightEditText = findViewById(R.id.edit_text_weight);
         ageEditText = findViewById(R.id.edit_text_age);
-        calculateButton = findViewById(R.id.button_calculate);
+        calculateButton = findViewById(R.id.button_calculate_bmi);
         calculateButtonRmr = findViewById(R.id.button_calculate_rmr);
         calculateButtonTarget = findViewById(R.id.button_calculate_target);
     }

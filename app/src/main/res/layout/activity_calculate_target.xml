@@ -1,179 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_view_calculate_target"
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed"
-        android:text="Calculate Your Target"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp" />
-
-    <RadioGroup
-        android:id="@+id/radio_group_measurement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <RadioButton
-            android:id="@+id/radiobutton_imperial_target"
+        <TextView
+            android:id="@+id/text_view_calculate_target"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Imperial" />
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/calculate_your_target"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
-        <RadioButton
-            android:id="@+id/radiobutton_metric_target"
+        <RadioGroup
+            android:id="@+id/radio_group_measurement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Metric" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/radiobutton_imperial_target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/imperial" />
+
+            <RadioButton
+                android:id="@+id/radiobutton_metric_target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/metric" />
+
+        </RadioGroup>
 
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radiobutton_female_target"
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radiobutton_male_target"
+            <RadioButton
+                android:id="@+id/radiobutton_female_target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
+
+            <RadioButton
+                android:id="@+id/radiobutton_male_target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male" />
+
+        </RadioGroup>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male" />
+            android:padding="4dp">
 
-    </RadioGroup>
+            <EditText
+                android:id="@+id/edit_text_feet_meters_target"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:hint="@string/feet_meters"
+                android:inputType="number"
+                android:textAlignment="center" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp">
+            <EditText
+                android:id="@+id/edit_text_inches_cm_target"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:hint="@string/inches_cm"
+                android:inputType="number" />
 
-        <EditText
-            android:id="@+id/edit_text_feet_meters_target"
+            <EditText
+                android:id="@+id/edit_text_weight_target"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:hint="@string/weight"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/edit_text_age_target"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:hint="@string/age"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <RadioGroup
+
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:hint="feet/meters"
-            android:inputType="number"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_button_sedentary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sedentary_light_exercise" />
+
+            <RadioButton
+                android:id="@+id/radio_button_slightly_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/slightly_active" />
+
+            <RadioButton
+                android:id="@+id/radio_button_moderately_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/moderately_active" />
+
+            <RadioButton
+                android:id="@+id/radio_button_very_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/very_active" />
+
+            <RadioButton
+                android:id="@+id/radio_button_extremely_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/extremely_active" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/Layout_target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/edit_text_expected_weight_loss"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:hint="@string/anticipated_loss"
+                android:inputType="number"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/edit_text_time_to_achieve_loss"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:hint="@string/days_to_achieve_loss"
+                android:inputType="number"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_estimate_target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/estimate_target"
             android:textAlignment="center" />
 
-        <EditText
-            android:id="@+id/edit_text_inches_cm_target"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:hint="inches/cm"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/edit_text_weight_target"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:hint="weight"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/edit_text_age_target"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+        <TextView
+            android:id="@+id/text_view_result_target"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:hint="age"
-            android:inputType="number" />
+            android:text="@string/awaiting_input" />
 
     </LinearLayout>
-
-    <RadioGroup
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/radio_button_sedentary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sedentary/Light exercise" />
-
-        <RadioButton
-            android:id="@+id/radio_button_slightly_active"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Slightly Active" />
-
-        <RadioButton
-            android:id="@+id/radio_button_moderately_active"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Moderately Active" />
-
-        <RadioButton
-            android:id="@+id/radio_button_very_active"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Very Active" />
-
-        <RadioButton
-            android:id="@+id/radio_button_extremely_active"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Extremely Active" />
-
-    </RadioGroup>
-
-    <LinearLayout
-        android:id="@+id/Layout_target"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <EditText
-            android:id="@+id/edit_text_expected_weight_loss"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:hint="anticipated loss"
-            android:inputType="number"
-            android:textAlignment="center" />
-
-        <EditText
-            android:id="@+id/edit_text_time_to_achieve_loss"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:hint="days to achieve loss"
-            android:inputType="number"
-            android:textAlignment="center" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button_estimate_target"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Estimate Target"
-        android:textAlignment="center" />
-
-    <TextView
-        android:id="@+id/text_view_result_target"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:text="Awaiting input..." />
-
-</LinearLayout>
+</ScrollView>
