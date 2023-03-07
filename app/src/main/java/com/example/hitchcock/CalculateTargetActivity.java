@@ -5,9 +5,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+//import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.DecimalFormat;
 
 public class CalculateTargetActivity extends AppCompatActivity {
 
@@ -33,7 +36,8 @@ public class CalculateTargetActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate_target);
-
+        findViews();
+        setupButtonClickListener();
     }
 
     private void findViews() {
@@ -57,7 +61,18 @@ public class CalculateTargetActivity extends AppCompatActivity {
         daysToAchieveTargetEditText = findViewById(R.id.edit_text_time_to_achieve_loss);
     }
 
-    private double calculateBmr(){
+    private void setupButtonClickListener() {
+        estimateTargetButton.setOnClickListener(v -> {
+            double bMrResult = calculateBmr();
+            double bMrPlusActivityResult = calculateBmrWithActivityExpenditure();
+            double targetCaloriesResult = calculateTargetCaloriesForWeightLoss();
+
+            displayResults(bMrResult, bMrPlusActivityResult, targetCaloriesResult);
+
+        });
+    }
+
+    private double calculateBmr() {
         boolean checkedMetric = metricButtonTarget.isChecked();
         boolean female = femaleButtonTarget.isChecked();
         String ageText = ageTargetEditText.getText().toString();
@@ -73,24 +88,22 @@ public class CalculateTargetActivity extends AppCompatActivity {
             double totalHeightInCentimeters = (centimeters) + (meters * 100);
             if (female) {
                 return 655.1 + (9.563 * weight) + (1.850 * totalHeightInCentimeters) - (4.676 * age);
-            }
-            else {
+            } else {
                 return 66.5 + (13.75 * weight) + (5.003 * totalHeightInCentimeters) - (6.75 * age);
             }
-        }
-        else {
+        } else {
             double totalHeightInInches = (meters * 12) + centimeters;
             double totalHeightInCentimeters = totalHeightInInches * 2.54;
             double weightInKg = weight * 0.45;
             if (female) {
                 return 655.1 + (9.563 * weightInKg) + (1.850 * totalHeightInCentimeters) - (4.676 * age);
-            }
-            else {
+            } else {
                 return 66.5 + (13.75 * weightInKg) + (5.003 * totalHeightInCentimeters) - (6.75 * age);
             }
         }
     }
-    private double calculateBmrWithActivityExpenditure(){
+
+    private double calculateBmrWithActivityExpenditure() {
         double bMr = calculateBmr();
         boolean sedentary = sedentaryButtonTarget.isChecked();
         boolean slightlyActive = slightlyActiveButtonTarget.isChecked();
@@ -98,7 +111,7 @@ public class CalculateTargetActivity extends AppCompatActivity {
         boolean veryActive = veryActiveButtonTarget.isChecked();
         //boolean extremelyActive = extremelyActiveButtonTarget.isChecked();
 
-        if (sedentary){
+        if (sedentary) {
             return bMr * 1.2;
         } else if (slightlyActive) {
             return bMr * 1.37;
@@ -106,12 +119,12 @@ public class CalculateTargetActivity extends AppCompatActivity {
             return bMr * 1.55;
         } else if (veryActive) {
             return bMr * 1.725;
-        }
-        else {
+        } else {
             return bMr * 1.9;
         }
     }
-    private double calculateTargetCaloriesForWeightLoss(){
+
+    private double calculateTargetCaloriesForWeightLoss() {
 
         double activityExpenditure = calculateBmrWithActivityExpenditure();
         String expectedLossText = desiredWeightLossEditText.getText().toString();
@@ -119,13 +132,24 @@ public class CalculateTargetActivity extends AppCompatActivity {
         int expectedLoss = Integer.parseInt(expectedLossText);
         int daysToTargetWeight = Integer.parseInt(daysToTargetWeightText);
 
-        //if imperial:
-        double perDayCalorieReduction = (expectedLoss * 3500) / daysToTargetWeight;
-        double calorieConsumptionToTarget = activityExpenditure - perDayCalorieReduction;
-
-        return calorieConsumptionToTarget;
-
+        if (imperialButtonTarget.isChecked()) {
+            return activityExpenditure - ((expectedLoss * 3500) / daysToTargetWeight);
+        } else {
+            return activityExpenditure - ((expectedLoss * 7700) / daysToTargetWeight);
+        }
     }
+
+    private void displayResults(double bMr, double bMrPlusActivity, double targetCalorieIntake) {
+
+        DecimalFormat myDecimalFormatter = new DecimalFormat("0.00");
+        String bmrTextResult = myDecimalFormatter.format(bMr);
+        String bMrPlusActivityTextResult = myDecimalFormatter.format(bMrPlusActivity);
+        String targetCalorieIntakeTextResult = myDecimalFormatter.format(targetCalorieIntake);
+        String fullResultString = "Your daily BMR (Basal Metabolic Rate) is " + bmrTextResult + " Calories. Factoring your activity level, your body uses about " + bMrPlusActivityTextResult + ". In order to achieve your target weight, you need to consume " + targetCalorieIntakeTextResult + " Calories.";
+
+        resultTextTarget.setText(fullResultString);
+    }
+
 }
 
 
