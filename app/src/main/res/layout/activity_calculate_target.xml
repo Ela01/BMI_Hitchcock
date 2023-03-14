@@ -24,6 +24,7 @@
             android:id="@+id/radio_group_measurement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
@@ -167,7 +168,7 @@
             android:id="@+id/button_estimate_target"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="48dp"
             android:text="@string/estimate_target"
             android:textAlignment="center" />
 

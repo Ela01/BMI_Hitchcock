@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:src="@drawable/bmi___rmr" />
+            android:src="@drawable/bmi_rmr_target_main" />
 
         <TextView
             android:layout_width="wrap_content"
